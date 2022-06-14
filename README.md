@@ -10,7 +10,7 @@
   </a>
 </p>
 
-> Projects created for the purpose of enriching the community of calm
+<h3 align="center">Projects created for the purpose of enriching the community of calm</h3>
 
 ## Monorepo
 
