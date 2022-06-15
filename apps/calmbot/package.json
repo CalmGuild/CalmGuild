@@ -1,0 +1,28 @@
+{
+  "name": "calmbot",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "clean": "rimraf ./build",
+    "build": "pnpm clean && tsc",
+    "dev": "pnpm clean && tsc-watch --onSuccess \"node ./build/index.js\" --preserveWatchOutput",
+    "lint": "eslint --fix . && prettier ./**/**.{json,md} --write"
+  },
+  "dependencies": {
+    "discord.js": "^13.8.0",
+    "dotenv": "^16.0.1",
+    "tiny-invariant": "^1.2.0"
+  },
+  "devDependencies": {
+    "@types/node": "^17.0.43",
+    "@typescript-eslint/eslint-plugin": "^5.27.1",
+    "@typescript-eslint/parser": "^5.27.1",
+    "eslint": "^8.15.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "prettier": "^2.7.0",
+    "rimraf": "^3.0.2",
+    "tsc-watch": "^5.0.3",
+    "typescript": "^4.7.3"
+  }
+}
