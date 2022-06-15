@@ -22,7 +22,7 @@ export default async function requireAuthentication(session: Session): Promise<R
     }
 
     let user = await database.user.findUnique({ where: { discordId: discordId } });
-    if (!user) {
+    if (!user || !user.accessToken || !user.refreshToken || !user.tokenExpires) {
       session.unset("discordId");
       resolve({ fail: redirect(oauthRedirect, { headers: { "Set-Cookie": await commitSession(session) } }) });
       return;
@@ -47,6 +47,8 @@ export default async function requireAuthentication(session: Session): Promise<R
         },
       });
     }
+
+    if (!user.accessToken) return;
 
     getDiscordUser(user.accessToken)
       .then((user) => {

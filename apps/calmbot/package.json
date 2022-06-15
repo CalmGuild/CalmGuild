@@ -11,7 +11,8 @@
   "dependencies": {
     "discord.js": "^13.8.0",
     "dotenv": "^16.0.1",
-    "tiny-invariant": "^1.2.0"
+    "tiny-invariant": "^1.2.0",
+    "@calmguild/database": "workspace:*"
   },
   "devDependencies": {
     "@types/node": "^17.0.43",

@@ -1,4 +1,4 @@
-import { createCookieSessionStorage, Session, redirect } from "@remix-run/node";
+import { createCookieSessionStorage, Session } from "@remix-run/node";
 import invariant from "tiny-invariant";
 
 const sessionSecret = process.env.SESSION_SECRET;

@@ -1,16 +1,18 @@
-import { Client, Collection, Message, PermissionString } from "discord.js";
+import { Client, Collection, Message } from "discord.js";
 import fs from "fs";
 import path from "path";
 import invariant from "tiny-invariant";
 import { checkCommandConditions } from "../utils/checkCommandConditions";
+import { Permission } from "../utils/checkPermission";
 import { getCommand } from "../utils/getCommand";
 
 type CommandRunCallback = (client: Client, message: Message, args: string[]) => void;
 type CommandType = "COMMAND" | "SUB_COMMAND";
+
 export interface Command {
   run: CommandRunCallback;
   usage: string;
-  requiredPermission?: PermissionString;
+  requiredPermission?: Permission;
   type: CommandType;
   minimumArguments?: number;
   aliases?: string[];
@@ -51,12 +53,12 @@ export const registerCommands = (client: Client, commandsDirectory: string) => {
   }
 };
 
-export const handleCommand = (client: Client, command: Command, message: Message, args: string[]) => {
+export const handleCommand = async (client: Client, command: Command, message: Message, args: string[]) => {
   if (command.type === "SUB_COMMAND") {
     const subcommand = args[0] && command.subcommands ? getCommand(command.subcommands, args[0]) : undefined;
     if (subcommand) {
       args.shift();
-      const meetsConditions = checkCommandConditions(subcommand, message, args);
+      const meetsConditions = await checkCommandConditions(subcommand, message, args);
       if (meetsConditions) {
         subcommand.run(client, message, args);
       }
@@ -65,7 +67,7 @@ export const handleCommand = (client: Client, command: Command, message: Message
 
     const defaultSubcommand = command.subcommands?.find((command) => command.defaultSubcommand ?? false);
     if (defaultSubcommand) {
-      const meetsConditions = checkCommandConditions(defaultSubcommand, message, args);
+      const meetsConditions = await checkCommandConditions(defaultSubcommand, message, args);
       if (meetsConditions) {
         defaultSubcommand.run(client, message, args);
       }
@@ -74,7 +76,7 @@ export const handleCommand = (client: Client, command: Command, message: Message
     return;
   }
 
-  const meetsConditions = checkCommandConditions(command, message, args);
+  const meetsConditions = await checkCommandConditions(command, message, args);
   if (meetsConditions) {
     command.run(message.client, message, args);
   }

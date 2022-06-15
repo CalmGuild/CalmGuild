@@ -8,10 +8,27 @@ generator client {
 }
 
 model User {
-  discordId     String @id
-  username      String
-  discriminator String
-  accessToken   String
-  refreshToken  String
-  tokenExpires  BigInt
+  discordId     String  @id
+  username      String?
+  discriminator String?
+  accessToken   String?
+  refreshToken  String?
+  tokenExpires  BigInt?
+}
+
+model Guild {
+  guildId String @id
+}
+
+enum RoleType {
+  DISCORD_STAFF
+  GUILD_STAFF
+}
+
+model Role {
+  guildId  String
+  roleId   String
+  roleType RoleType
+
+  @@id([guildId, roleType])
 }

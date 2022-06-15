@@ -1,10 +1,13 @@
 import { Message } from "discord.js";
 import { Command } from "../client/command";
+import checkPermission from "./checkPermission";
 
-export const checkCommandConditions = (command: Command, message: Message, args: string[]): boolean => {
+export const checkCommandConditions = async (command: Command, message: Message, args: string[]) => {
   const requiredPermission = command.requiredPermission;
   if (requiredPermission && message.member) {
-    if (!message.member.permissions.has(requiredPermission)) {
+    const hasPermission = await checkPermission(message.member, requiredPermission);
+
+    if (!hasPermission) {
       message.reply(`You are missing permission: \`${requiredPermission}\``);
       return false;
     }
