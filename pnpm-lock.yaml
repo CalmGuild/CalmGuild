@@ -20,6 +20,7 @@ importers:
       '@types/node': ^17.0.43
       '@typescript-eslint/eslint-plugin': ^5.27.1
       '@typescript-eslint/parser': ^5.27.1
+      axios: ^0.27.2
       discord.js: ^13.8.0
       dotenv: ^16.0.1
       eslint: ^8.15.0
@@ -32,6 +33,7 @@ importers:
       typescript: ^4.7.3
     dependencies:
       '@calmguild/database': link:../../packages/database
+      axios: 0.27.2
       discord.js: 13.8.0
       dotenv: 16.0.1
       tiny-invariant: 1.2.0
