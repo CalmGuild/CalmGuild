@@ -4,6 +4,7 @@ import path from "path";
 import invariant from "tiny-invariant";
 import { registerCommands } from "./client/command";
 import { registerEvents } from "./client/events";
+import { registerInteractions } from "./client/interactions";
 import { transformClient } from "./client/transform";
 
 dotenv.config();
@@ -16,5 +17,6 @@ transformClient(client);
 
 registerCommands(client, path.join(__dirname, "commands"));
 registerEvents(client, path.join(__dirname, "events"));
+registerInteractions(client, path.join(__dirname, "interactions"));
 
 client.login(process.env.BOT_TOKEN);

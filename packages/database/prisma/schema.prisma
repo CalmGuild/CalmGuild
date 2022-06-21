@@ -8,17 +8,19 @@ generator client {
 }
 
 model User {
-  discordId     String  @id @unique
-  minecraftUuid String? @unique
-  username      String?
-  discriminator String?
-  accessToken   String?
-  refreshToken  String?
-  tokenExpires  BigInt?
+  discordId           String  @id @unique
+  minecraftUuid       String? @unique
+  openTicketChannelId String? @unique
+  username            String?
+  discriminator       String?
+  accessToken         String?
+  refreshToken        String?
+  tokenExpires        BigInt?
 }
 
 model Guild {
-  guildId String @id
+  guildId       String   @id
+  ticketRoleIds String[]
 }
 
 enum RoleType {
