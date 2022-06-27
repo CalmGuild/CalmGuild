@@ -18,6 +18,11 @@ This repository is a monorepo built using [turborepo](https://turborepo.org/)
 
 Using a monorepo allows us to share utility files across multiple projects, a great example of this would be sharing database schemas
 
+### Apps & Packages
+- `/apps/calmbot` The bot serving the discord
+- `/apps/web` The website built in remix
+- `packages/database` A shared prisma database schema for all apps 
+
 ## Licensing
 
 This project is licensed under the [MIT License]("https://github.com/calmguild/calmguild/blobl/master/LICENSE"), you may use any code found in this repository for any purposes without permission or oversight from anyone
