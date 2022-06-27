@@ -1,3 +1,40 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Comfortaa:wght@500&display=swap");
+
 @tailwind base;
 @tailwind components;
+
+* {
+  @apply text-gray-200;
+}
+
+body {
+  @apply bg-background;
+}
+
+.centered {
+  @apply justify-center items-center;
+}
+
+.clickableLink {
+  @apply text-blue-500 hover:text-blue-400 transition ease-in;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6pimage.pngx rgba(0,0,0,0.3); 
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+    background: #008080; 
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5); 
+}
+
 @tailwind utilities;
