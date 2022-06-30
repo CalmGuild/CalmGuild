@@ -4,7 +4,8 @@
 @tailwind base;
 @tailwind components;
 
-* {
+h1,
+p {
   @apply text-gray-200;
 }
 
@@ -25,16 +26,16 @@ body {
 }
 
 ::-webkit-scrollbar-track {
-    -webkit-box-shadow: inset 0 0 6pimage.pngx rgba(0,0,0,0.3); 
-    -webkit-border-radius: 10px;
-    border-radius: 10px;
+  -webkit-box-shadow: inset 0 0 6pimage.pngx rgba(0, 0, 0, 0.3);
+  -webkit-border-radius: 10px;
+  border-radius: 10px;
 }
 
 ::-webkit-scrollbar-thumb {
-    -webkit-border-radius: 10px;
-    border-radius: 10px;
-    background: #008080; 
-    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5); 
+  -webkit-border-radius: 10px;
+  border-radius: 10px;
+  background: #008080;
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.5);
 }
 
 @tailwind utilities;

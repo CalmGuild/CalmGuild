@@ -16,18 +16,12 @@ export default function Index() {
           </div>
         </div>
       </div>
-      <div className="bg-backgroundDark h-[47vh] flex flex-col items-center">
+      <div className="bg-backgroundDark h-[60vh] flex flex-col items-center">
         <h1 className="text-4xl font-display mt-12">Why us?</h1>
-        <div className="flex flex-col space-y-28 relative top-[15%] centered">
-          <h1 className="text-3xl text-slate-200 font-secondary" data-aos="fade">
-            Top #50 hypixel guilds
-          </h1>
-          <h1 className="text-3xl text-slate-200 font-secondary" data-aos="fade">
-            Great staff team
-          </h1>
-          <h1 className="text-3xl text-slate-200 font-secondary" data-aos="fade">
-            Active Discord
-          </h1>
+        <div className="flex flex-col space-y-28 relative top-[15%] centered child:text-slate-200 child:font-secondary child:text-3xl">
+          <h1 data-aos="fade">Top #50 hypixel guilds</h1>
+          <h1 data-aos="fade">Great staff team</h1>
+          <h1 data-aos="fade">Active Discord</h1>
         </div>
       </div>
       <div className="bg-background h-[40vh] flex centered">
