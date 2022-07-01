@@ -1,11 +1,12 @@
-import type { MetaFunction } from "@remix-run/node";
-import { Links, LiveReload, Meta, Outlet, Scripts, ScrollRestoration } from "@remix-run/react";
+import { MetaFunction, redirect } from "@remix-run/node";
+import { Links, LiveReload, Meta, Outlet, Scripts, ScrollRestoration, useCatch } from "@remix-run/react";
 
 import aos from "aos";
 
 import styles from "./styles/generated.css";
 import aosStyles from "aos/dist/aos.css";
 import { useEffect } from "react";
+import NotFound from "./components/NotFound";
 
 export function links() {
   return [
@@ -34,6 +35,24 @@ export default function App() {
       <body>
         <Outlet />
         <ScrollRestoration />
+        <Scripts />
+        <LiveReload />
+      </body>
+    </html>
+  );
+}
+
+export function CatchBoundary() {
+  const caught = useCatch();
+
+  return (
+    <html>
+      <head>
+        <Meta />
+        <Links />
+      </head>
+      <body>
+        {caught.status === 404 ? <NotFound /> : ""}
         <Scripts />
         <LiveReload />
       </body>

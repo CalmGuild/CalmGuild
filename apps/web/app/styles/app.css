@@ -5,8 +5,10 @@
 @tailwind components;
 
 h1,
+h2,
+div,
 p {
-  @apply text-gray-200;
+  @apply text-gray-200 font-secondary;
 }
 
 body {

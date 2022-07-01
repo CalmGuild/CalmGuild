@@ -1,8 +1,9 @@
-import { HomeIcon, LogoutIcon, QuestionMarkCircleIcon } from "@heroicons/react/outline";
+import { BeakerIcon, HomeIcon, LogoutIcon } from "@heroicons/react/outline";
 import { Form, Link, useLocation } from "@remix-run/react";
 
 export const ButtonType = {
   HOME: { label: "Overview", icon: <HomeIcon />, to: "/dashboard" },
+  TEST: { label: "Test", icon: <BeakerIcon />, to: "/dashboard/test" },
 };
 
 type ButtonType = typeof ButtonType[keyof typeof ButtonType];
@@ -24,7 +25,7 @@ export default function DashboardButton({ type }: DashboardButtonProps) {
     );
   } else
     return (
-      <Form method="post" action="/api/logout" className="w-[90%] h-12 rounded-md hover:bg-[#282828] flex items-center">
+      <Form method="post" action="/api/logout" className="w-[90%] h-12 rounded-md transition-all hover:bg-[#282828] flex items-center">
         <button type="submit" className="flex flex-row space-x-5 w-full">
           <LogoutIcon className="w-8 h-8 text-gray-400 ml-3" />
           <p className="text-xl text-gray-400">Logout</p>
