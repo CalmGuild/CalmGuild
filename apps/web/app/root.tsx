@@ -1,4 +1,4 @@
-import { MetaFunction, redirect } from "@remix-run/node";
+import { MetaFunction } from "@remix-run/node";
 import { Links, LiveReload, Meta, Outlet, Scripts, ScrollRestoration, useCatch } from "@remix-run/react";
 
 import aos from "aos";
@@ -46,7 +46,7 @@ export function CatchBoundary() {
   const caught = useCatch();
 
   return (
-    <html>
+    <html lang="en">
       <head>
         <Meta />
         <Links />

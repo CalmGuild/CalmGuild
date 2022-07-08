@@ -19,5 +19,11 @@
       ""
     ],
     "description": "Generate boilerplate code for a new command file"
+  },
+  "Import Database": {
+    "scope": "typescript",
+    "prefix": "idb",
+    "body": "import database from \"@calmguild/database\";",
+    "description": "Import database from calmguild/database"
   }
 }
