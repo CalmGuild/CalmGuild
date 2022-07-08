@@ -21,7 +21,7 @@ Using a monorepo allows us to share utility files across multiple projects, a gr
 ### Apps & Packages
 - `/apps/calmbot` The bot serving the discord
 - `/apps/web` The website built in remix
-- `packages/database` A shared prisma database schema for all apps 
+- `/packages/database` A shared prisma database schema for all apps 
 
 ## Licensing
 
