@@ -33,9 +33,6 @@ enum RoleType {
 }
 
 model Role {
-  guildId  String
+  roleType RoleType @id
   roleId   String
-  roleType RoleType
-
-  @@id([guildId, roleType])
 }
