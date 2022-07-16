@@ -8,10 +8,13 @@ generator client {
 }
 
 model User {
-  discordId                 String  @id @unique
-  minecraftUuid             String? @unique
-  openTicketChannelId       String? @unique
-  guildApplicationChannelId String? @unique
+  discordId                 String   @id @unique
+  minecraftUuid             String?  @unique
+  openTicketChannelId       String?  @unique
+  guildApplicationChannelId String?  @unique
+  timeJoinedWaitlist        BigInt?
+  frozenOnWaitlist          Boolean?
+  informedOnWaitlist        Boolean?
   username                  String?
   discriminator             String?
   accessToken               String?
@@ -21,6 +24,7 @@ model User {
 
 model Guild {
   guildId              String   @id
+  waitlistJoinMessage  String   @default("You are now on the waitlist")
   ticketRoleIds        String[]
   applicationQuestions String[]
 }
@@ -35,4 +39,13 @@ enum RoleType {
 model Role {
   roleType RoleType @id
   roleId   String
+}
+
+enum ChannelType {
+  WAITLIST
+}
+
+model Channel {
+  channelType ChannelType @id
+  channelId   String
 }
