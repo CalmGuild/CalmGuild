@@ -1,11 +1,11 @@
 import { CommandData, Util } from "discord.js";
 import database from "@calmguild/database";
-import { getNameHistoryFromUUID } from "../utils/apis/mojang";
+import { getNameHistoryFromUUID } from "../../utils/apis/mojang";
 
 const command: CommandData = {
   run: async (client, message) => {
-    if (!message.guild) return;
     const waitlistMembers = await database.user.findMany({ where: { timeJoinedWaitlist: { not: null } } });
+    if (!message.guild) return;
     waitlistMembers.sort((a, b) => {
       if (!a.timeJoinedWaitlist || !b.timeJoinedWaitlist || a.timeJoinedWaitlist === b.timeJoinedWaitlist) return 0;
       if (a.timeJoinedWaitlist > b.timeJoinedWaitlist) {
@@ -39,6 +39,7 @@ const command: CommandData = {
   },
   usage: "waitlist",
   aliases: ["wl"],
+  defaultSubcommand: true,
 };
 
 export default command;
