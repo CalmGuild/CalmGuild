@@ -16,7 +16,7 @@ const addToWaitlist: Event = {
 
     // waitlist role added
     if (newRoles.has(waitlistRole.id) && !oldRoles.has(waitlistRole.id)) {
-      await database.user.update({ where: { discordId: newMember.id }, data: { timeJoinedWaitlist: Date.now() } });
+      await database.user.update({ where: { discordId: newMember.id }, data: { timeJoinedWaitlist: Date.now(), informedOnWaitlist: null, frozenOnWaitlist: null } });
 
       const waitlistChannel = await getChannel("WAITLIST", newMember.guild);
       if (waitlistChannel instanceof BaseGuildTextChannel) {
@@ -27,7 +27,7 @@ const addToWaitlist: Event = {
 
     // waitlist role removed
     else if (oldRoles.has(waitlistRole.id) && !newRoles.has(waitlistRole.id)) {
-      await database.user.update({ where: { discordId: newMember.id }, data: { timeJoinedWaitlist: null } });
+      await database.user.update({ where: { discordId: newMember.id }, data: { timeJoinedWaitlist: null, informedOnWaitlist: null, frozenOnWaitlist: null } });
     }
   },
   type: "guildMemberUpdate",
